@@ -1,0 +1,29 @@
+from controller import Robot
+
+# Inisialisasi robot
+robot = Robot()
+
+# Waktu langkah dalam milidetik (ms)
+time_step = int(robot.getBasicTimeStep())
+
+# Ambil referensi untuk motor roda kiri dan kanan
+left_motor = robot.getDevice('left wheel motor')
+right_motor = robot.getDevice('right wheel motor')
+
+# Set mode posisi motor menjadi infinite (agar bisa diatur kecepatan)
+left_motor.setPosition(float('inf'))
+right_motor.setPosition(float('inf'))
+
+# Tentukan kecepatan roda
+# Roda kiri lebih lambat untuk menghasilkan gerakan melingkar
+left_speed = 3.0  # kecepatan roda kiri (lebih lambat)
+right_speed = 6.0  # kecepatan roda kanan (lebih cepat)
+
+# Deklarasi kecepatan roda kiri dan kanan
+left_motor.setVelocity(left_speed)
+right_motor.setVelocity(right_speed)
+
+# Loop untuk menjaga simulasi tetap berjalan
+while robot.step(time_step) != -1:
+    # Tidak ada perintah tambahan yang dibutuhkan dalam loop ini
+    pass
