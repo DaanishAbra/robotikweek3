@@ -1,0 +1,39 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/apartment_structure/protos/Wall.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.12382438296152977 -0.010168991809971667 -0.9922520414641458 3.3041865370940338
+  position 1.9586053246434025 -0.22980540631249324 0.6594637803507977
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+}
+E-puck {
+  hidden position_0_0 1865.9273378659423
+  hidden position_0_1 2685.2612462834045
+  hidden linearVelocity_0 -0.004796574522536676 0.11994152820175775 5.8399488871903645e-06
+  hidden angularVelocity_0 -0.0024750794617171123 -0.00045294052277633967 -7.551837932052668e-05
+  hidden rotation_1 0 1 0 6.104486940784666
+  hidden linearVelocity_1 -0.0047988617800026985 0.11995383003440861 -6.310619649108064e-06
+  hidden angularVelocity_1 -5.997693589179807 -0.23994173614480355 0.00028409264428872497
+  hidden rotation_2 0 -0.9999999999999999 0 3.942065189458523
+  hidden linearVelocity_2 -0.004798811117429182 0.11995391261455184 1.8689689998785407e-05
+  hidden angularVelocity_2 -5.997693585579989 -0.23994190723738504 0.0002838981489445438
+  translation -0.1288812735602198 -0.2546834128453334 -6.469281163087176e-05
+  rotation 0.0006966533320041291 -0.0006242744762028006 0.9999995624776611 1.6107020210765148
+  controller "week3_3try"
+}
+Wall {
+  translation 3.8745e-07 0.38 1.51159e-14
+  rotation -9.589759999999998e-09 -9.589789999999996e-09 0.9999999999999998 1.5707953071795862
+}
