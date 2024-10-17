@@ -1,0 +1,49 @@
+from controller import Robot
+
+# Inisialisasi robot
+robot = Robot()
+
+# Waktu langkah dalam milidetik (ms)
+time_step = int(robot.getBasicTimeStep())
+
+# Ambil referensi untuk motor roda kiri dan kanan
+left_motor = robot.getDevice('left wheel motor')
+right_motor = robot.getDevice('right wheel motor')
+
+# Set motor posisi ke infinity (untuk mengontrol kecepatan)
+left_motor.setPosition(float('inf'))
+right_motor.setPosition(float('inf'))
+
+# Ambil referensi untuk sensor proximity (8 sensor pada e-puck)
+prox_sensors = []
+sensor_names = ['ps0', 'ps1', 'ps2', 'ps3', 'ps4', 'ps5', 'ps6', 'ps7']
+for i in range(8):
+    sensor = robot.getDevice(sensor_names[i])
+    sensor.enable(time_step)  # Aktifkan sensor
+    prox_sensors.append(sensor)
+
+# Tentukan kecepatan roda awal
+left_speed = 6.0
+right_speed = 6.0
+
+# Fungsi untuk memeriksa apakah ada objek di depan
+def object_detected():
+    # Sensor ps0, ps1, dan ps2 berada di depan robot
+    # Nilai di atas 80.0 dianggap mendeteksi objek dekat
+    front_left = prox_sensors[0].getValue() > 80.0  # ps0
+    front_middle = prox_sensors[1].getValue() > 80.0  # ps1
+    front_right = prox_sensors[2].getValue() > 80.0  # ps2
+    return front_left or front_middle or front_right
+
+# Loop simulasi
+while robot.step(time_step) != -1:
+    if object_detected():
+        # Jika ada objek di depan, berhenti
+        left_motor.setVelocity(0.0)
+        right_motor.setVelocity(0.0)
+        print("e-puck berhenti")
+    else:
+        # Jika tidak ada objek, lanjutkan bergerak maju
+        left_motor.setVelocity(left_speed)
+        right_motor.setVelocity(right_speed)
+        print("e-puck berjalan")
